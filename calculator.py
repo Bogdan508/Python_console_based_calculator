@@ -1,5 +1,6 @@
 from colorama import init
 import time
+import sys
 from colorama import Fore, Back, Style
 init()
 
@@ -123,7 +124,7 @@ def more_operations():
         print(Back.CYAN)
         print('Closing...')
         time.sleep(0.5)
-        quit()
+        sys.exit()
     else:
         exit()
 
@@ -137,23 +138,9 @@ def exit():
         print(Back.CYAN)
         print('Closing...')
         time.sleep(0.5)
-        quit()
+        sys.exit()
     else:
-        sectry()
-
-def sectry():
-    print(Back.RED)
-    y = input('Type y(yes)/n(no) or press Enter(no): ')
-    if y == 'y':
-        calculation()
-        more_operations()
-    elif y == 'n' or y == '':
-        print(Back.CYAN)
-        print('Closing...')
-        time.sleep(0.5)
-        quit()
-    else:
-        sectry()
+        exit()
 
 calculation()
 more_operations()
