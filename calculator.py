@@ -1,7 +1,7 @@
 from colorama import init
 import time
 import sys
-from colorama import Fore, Back, Style
+from colorama import Back
 init()
 
 def first_op():
@@ -116,11 +116,11 @@ def result():
 def more_operations():
     print(Back.CYAN)
     moreop = input('One more operation?(y/n(Enter)): ')
-    while moreop == 'y':
+    while moreop == 'y' or moreop =='Y':
         calculation()
         print(Back.CYAN)
         moreop = input('One more operation?(y/n(Enter)): ')
-    if moreop == 'n' or moreop == '':
+    if moreop == 'n' or moreop == 'N' or moreop == '':
         print(Back.CYAN)
         print('Closing...')
         time.sleep(0.5)
@@ -131,10 +131,10 @@ def more_operations():
 def exit():
     print(Back.RED)
     x = input('Type y(yes)/n(no) or press Enter(no): ')
-    if x == 'y':
+    if x == 'y' or x =='Y':
         calculation()
         more_operations()
-    elif x == 'n' or x == '':
+    elif x == 'n' or x =='N' or x == '':
         print(Back.CYAN)
         print('Closing...')
         time.sleep(0.5)
