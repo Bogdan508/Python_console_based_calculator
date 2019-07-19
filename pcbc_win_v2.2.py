@@ -42,12 +42,6 @@ def first_op():
             first_len = 1
         else:
             first_len = len(first_v)
-        global first_up_line
-        global first_down_line
-        global zero_down_line
-        first_up_line = first_len * '-'
-        first_down_line = first_len * upper_sym
-        zero_down_line = 12 * upper_sym
     except:
         cmd_clean()
         print(Back.RED, end = '')
@@ -57,14 +51,51 @@ def first_op():
         time.sleep(0.5)
         first_op()
 
+    try:
+        global first_zerof
+        first_zerof = False
+        global fminus_trig
+        fminus_trig = False
+        global count1
+        count1 = 0
+        for i in range(first_len):
+            if first_v[i] == str(0) and first_len != 1:
+                count1 = count1 + 1
+            elif first_v[i] == str('.'):
+                count1 = count1 - 1
+                break
+            elif first_v[i] == '-':
+                count1 = count1 + 1
+                fminus_trig = True
+                continue
+            else:
+                break
+    except:
+        count1 = 0
+        first_v = 0
+        first_zerof = True
+
+    global first_up_line
+    global first_down_line
+    global zero_down_line
+    first_len = first_len-count1
+    first_up_line = first_len * '-'
+    first_down_line = first_len * upper_sym
+    zero_down_line = 12 * upper_sym
+
 def oper_c():
     global symb
     print(Style.RESET_ALL, end = '')
     print('    ','---' + first_up_line + '---------')
     print('    ','| ', end = '')
     print(Back.CYAN, end = '')
-    sfirst_v = str(first_v)
-    print('', sfirst_v, ' ?', ' ? ', end = '')
+    try:
+        if fminus_trig is True:
+            print('', '-' + first_v[count1:first_len+count1], ' ?', ' ? ', end = '')
+        else:
+            print('', first_v[count1:first_len+count1], ' ?', ' ? ', end = '')
+    except:
+        print('', '0', ' ?', ' ? ', end = '')
     print(Style.RESET_ALL, end = '')
     print(' |')
     print('    ',first_down_line + zero_down_line)
@@ -85,8 +116,13 @@ def oper_c():
             print('    ','-----------' + first_up_line)
             print('    ','| ', end = '')
             print(Back.CYAN, end = '')
-            sfirst_v = str(first_v)
-            print('',sq_root, 'of', sfirst_v,'', end = '')
+            try:
+                if fminus_trig is True:
+                    print('',sq_root, 'of', '-' + first_v[count1:first_len+count1],'', end = '')
+                else:
+                    print('',sq_root, 'of', first_v[count1:first_len+count1],'', end = '')
+            except:
+                print('',sq_root, 'of', '0','', end = '')
             print(Style.RESET_ALL, end = '')
             print(' |')
             print('    ',first_down_line + '-----------')
@@ -119,12 +155,16 @@ def sec_op():
         print('    ','--' + first_up_line + sec_up_line + '---------')
         print('    ','| ', end = '')
         print(Back.CYAN, end = '')
-        sfirst_v = str(first_v)
-        print('', sfirst_v,'', symb, ' ? ', end = '')
+        try:
+            if fminus_trig is True:
+                print('', '-' + first_v[count1:first_len+count1],'', symb, ' ? ', end = '')
+            else:
+                print('', first_v[count1:first_len+count1],'', symb, ' ? ', end = '')
+        except:
+            print('', '0','', symb, ' ? ', end = '')
         print(Style.RESET_ALL, end = '')
         print(' |')
         print('    ',first_down_line + sec_down_line + add1_down)
-
         print(Back.CYAN)
         b = input('Enter the second number : ')
         cmd_clean()
@@ -144,12 +184,6 @@ def sec_op():
             sec_len = 1
         else:
             sec_len = len(second_v)
-        global third_up_line
-        global third_down_line
-        global add2_down
-        third_up_line = sec_len * '-'
-        third_down_line = sec_len * upper_sym
-        add2_down = 10 * upper_sym
     except:
         cmd_clean()
         print(Back.RED, end = '')
@@ -158,6 +192,38 @@ def sec_op():
         print('')
         time.sleep(0.5)
         sec_op()
+
+    try:
+        global sec_zerof
+        sec_zerof = False
+        global sminus_trig
+        sminus_trig = False
+        global count2
+        count2 = 0
+        for i in range(sec_len):
+            if second_v[i] == str(0) and sec_len != 1:
+                count2 = count2 + 1
+            elif second_v[i] == str('.'):
+                count2 = count2 - 1
+                break
+            elif second_v[i] == '-':
+                count2 = count2 + 1
+                sminus_trig = True
+                continue
+            else:
+                break
+    except:
+        count2 = 0
+        second_v = 0
+        sec_zerof = True
+
+    global third_up_line
+    global third_down_line
+    global add2_down
+    sec_len = sec_len-count2
+    third_up_line = sec_len * '-'
+    third_down_line = sec_len * upper_sym
+    add2_down = 10 * upper_sym
 
 def calculation():
     cmd_clean()
@@ -180,9 +246,16 @@ def calculation():
             print('    ','--' + first_up_line + sec_up_line + third_up_line + '--------')
             print('    ','| ', end = '')
             print(Back.CYAN, end = '')
-            sfirst_v = str(first_v)
-            ssecond_v = str(second_v)
-            print('', sfirst_v,'', symb,'', ssecond_v,'', end = '')
+            try:
+                print('', first_v[count1:first_len+count1],'', symb,'', second_v[count2:sec_len+count2],'', end = '')
+            except:
+                if first_zerof is True and sec_zerof is True:
+                    print('', '0','', symb,'', '0','', end = '')
+                elif first_zerof is False and sec_zerof is True:
+                    if fminus_trig is True:
+                        print('', '-' + first_v[count1:first_len+count1],'', symb,'', '0','', end = '')
+                    else:
+                        print('', first_v[count1:first_len+count1],'', symb,'', '0','', end = '')
             print(Style.RESET_ALL, end = '')
             print(' |')
             print('    ',first_down_line + sec_down_line + third_down_line + add2_down)
@@ -223,9 +296,22 @@ def result():
     print('    ','--' + first_up_line + sec_up_line + third_up_line + '--------')
     print('    ','| ', end = '')
     print(Back.CYAN, end = '')
-    sfirst_v = str(first_v)
-    ssecond_v = str(second_v)
-    print('', sfirst_v,'', symb,'', ssecond_v,'', end = '')
+    try:
+        if fminus_trig is True and sminus_trig is True:
+            print('', '-' + first_v[count1:first_len+count1],'', symb,'', '-' + second_v[count2:sec_len+count2],'', end = '')
+        elif fminus_trig is True and sminus_trig is False:
+            print('', '-' + first_v[count1:first_len+count1],'', symb,'', second_v[count2:sec_len+count2],'', end = '')
+        elif fminus_trig is False and sminus_trig is True:
+            print('', first_v[count1:first_len+count1],'', symb,'', '-' + second_v[count2:sec_len+count2],'', end = '')
+        else:
+            print('', first_v[count1:first_len+count1],'', symb,'', second_v[count2:sec_len+count2],'', end = '')
+    except:
+        if first_zerof is True and sec_zerof is True:
+            print('', '0','', symb,'', '0','', end = '')
+        elif first_zerof is True and sec_zerof is False:
+            print('', '0','', symb,'', second_v[count2:sec_len+count2],'', end = '')
+        elif first_zerof is False and sec_zerof is True:
+            print('', first_v[count1:first_len+count1],'', symb,'', '0','', end = '')
     print(Style.RESET_ALL, end = '')
     print(' |')
     print('    ',first_down_line + sec_down_line + third_down_line + add2_down)
