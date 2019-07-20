@@ -79,8 +79,12 @@ def first_op():
     global first_down_line
     global zero_down_line
     first_len = first_len-count1
-    first_up_line = first_len * '-'
-    first_down_line = first_len * upper_sym
+    if fminus_trig is True:
+        first_up_line = (first_len + 1) * '-'
+        first_down_line = (first_len + 1) * upper_sym
+    else:
+        first_up_line = first_len * '-'
+        first_down_line = first_len * upper_sym
     zero_down_line = 12 * upper_sym
 
 def oper_c():
@@ -221,8 +225,12 @@ def sec_op():
     global third_down_line
     global add2_down
     sec_len = sec_len-count2
-    third_up_line = sec_len * '-'
-    third_down_line = sec_len * upper_sym
+    if sminus_trig is True:
+        third_up_line = (sec_len + 1) * '-'
+        third_down_line = (sec_len + 1) * upper_sym
+    else:
+        third_up_line = sec_len * '-'
+        third_down_line = sec_len * upper_sym
     add2_down = 10 * upper_sym
 
 def calculation():
