@@ -58,6 +58,8 @@ def first_op():
         fminus_trig = False
         global count1
         count1 = 0
+        if first_v[first_len-1] == '.':
+            first_len = first_len - 1
         for i in range(first_len):
             if first_v[i] == str(0) and first_len != 1:
                 count1 = count1 + 1
@@ -204,6 +206,8 @@ def sec_op():
         sminus_trig = False
         global count2
         count2 = 0
+        if second_v[sec_len-1] == '.':
+            sec_len = sec_len - 1
         for i in range(sec_len):
             if second_v[i] == str(0) and sec_len != 1:
                 count2 = count2 + 1
@@ -247,6 +251,8 @@ def calculation():
         result()
     elif symb == '*':
         res = float(first_v) * float(second_v)
+        if res == 0:
+            res = 0
         result()
     elif symb == '/':
         if second_v == 0:
@@ -316,10 +322,14 @@ def result():
     except:
         if first_zerof is True and sec_zerof is True:
             print('', '0','', symb,'', '0','', end = '')
-        elif first_zerof is True and sec_zerof is False:
+        elif first_zerof is True and sec_zerof is False and sminus_trig is False:
             print('', '0','', symb,'', second_v[count2:sec_len+count2],'', end = '')
-        elif first_zerof is False and sec_zerof is True:
+        elif first_zerof is True and sec_zerof is False and sminus_trig is True:
+            print('', '0','', symb,'', '-' + second_v[count2:sec_len+count2],'', end = '')
+        elif first_zerof is False and fminus_trig is False and sec_zerof is True:
             print('', first_v[count1:first_len+count1],'', symb,'', '0','', end = '')
+        elif first_zerof is False and fminus_trig is True and sec_zerof is True:
+            print('', '-' + first_v[count1:first_len+count1],'', symb,'', '0','', end = '')
     print(Style.RESET_ALL, end = '')
     print(' |')
     print('    ',first_down_line + sec_down_line + third_down_line + add2_down)
