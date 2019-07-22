@@ -15,16 +15,16 @@ def cmd_clean():
 
 def first_op():
     print(Style.RESET_ALL, end = '')
-    print('    ','-------------')
-    print('    ','| ', end = '')
+    print('      ','-------------')
+    print('      ','| ', end = '')
     print(Back.CYAN, end = '')
     print(' ?',' ?',' ? ', end = '')
     print(Style.RESET_ALL, end = '')
     print(' |')
-    print('    ','-------------')
+    print('      ','-------------')
     try:
         print(Back.CYAN)
-        a = input('Enter the first number: ')
+        a = input(' Enter the first number: ')
         cmd_clean()
         float(a)
 
@@ -45,8 +45,8 @@ def first_op():
     except:
         cmd_clean()
         print(Back.RED, end = '')
-        print(a, 'is not a number')
-        print('Select a num type value')
+        print('' , a, 'is not a number ')
+        print(' Select a num type value ')
         print('')
         time.sleep(0.5)
         first_op()
@@ -92,8 +92,8 @@ def first_op():
 def oper_c():
     global symb
     print(Style.RESET_ALL, end = '')
-    print('    ','---' + first_up_line + '---------')
-    print('    ','| ', end = '')
+    print('      ','---' + first_up_line + '---------')
+    print('      ','| ', end = '')
     print(Back.CYAN, end = '')
     try:
         if fminus_trig is True:
@@ -104,23 +104,23 @@ def oper_c():
         print('', '0', ' ?', ' ? ', end = '')
     print(Style.RESET_ALL, end = '')
     print(' |')
-    print('    ',first_down_line + zero_down_line)
+    print('      ',first_down_line + zero_down_line)
     print(Back.CYAN)
-    print('   |  +  |  -  |  *  |  /  |  ')
-    print('   |  %  | %of |  ** | sqr |  ')
+    print('   |  +  |  -  |  *  |  /  |   ')
+    print('   |  %  | %of |  ** | sqr |   ')
     print('')
-    print('(% - Modulus, ** - Exponent   ')
-    print('%of - Percentage, sqr - 2',sq_root,') ')
+    print(' (% - Modulus, ** - Exponent   ')
+    print(' %of - Percentage, sqr - 2',sq_root,') ')
     print('')
-    symb = input('Choose the operator: ')
+    symb = input(' Choose the operator: ')
     cmd_clean()
     if symb == '+' or symb == '-' or symb == '*' or symb == '/' or symb == '%' or symb == '%of' or symb == '**' or symb == 'sqr':
         oper = True
         if symb == 'sqr':
             res = float(first_v) ** 0.5
             print(Style.RESET_ALL, end = '')
-            print('    ','-----------' + first_up_line)
-            print('    ','| ', end = '')
+            print('      ','-----------' + first_up_line)
+            print('      ','| ', end = '')
             print(Back.CYAN, end = '')
             try:
                 if fminus_trig is True:
@@ -131,9 +131,9 @@ def oper_c():
                 print('',sq_root, 'of', '0','', end = '')
             print(Style.RESET_ALL, end = '')
             print(' |')
-            print('    ',first_down_line + '-----------')
+            print('      ',first_down_line + '-----------')
             print(Back.GREEN)
-            print('The answer is: ', res)
+            print('The answer is: ', round(res, 13), '')
             print('')
             more_operations()
 
@@ -158,8 +158,8 @@ def oper_c():
 def sec_op():
     try:
         print(Style.RESET_ALL, end = '')
-        print('    ','--' + first_up_line + sec_up_line + '---------')
-        print('    ','| ', end = '')
+        print('      ','--' + first_up_line + sec_up_line + '---------')
+        print('      ','| ', end = '')
         print(Back.CYAN, end = '')
         try:
             if fminus_trig is True:
@@ -170,9 +170,9 @@ def sec_op():
             print('', '0','', symb, ' ? ', end = '')
         print(Style.RESET_ALL, end = '')
         print(' |')
-        print('    ',first_down_line + sec_down_line + add1_down)
+        print('      ',first_down_line + sec_down_line + add1_down)
         print(Back.CYAN)
-        b = input('Enter the second number : ')
+        b = input(' Enter the second number: ')
         cmd_clean()
         float(b)
 
@@ -193,8 +193,8 @@ def sec_op():
     except:
         cmd_clean()
         print(Back.RED, end = '')
-        print(b, 'is not a number')
-        print('Select a num type value')
+        print('', b, 'is not a number ')
+        print(' Select a num type value ')
         print('')
         time.sleep(0.5)
         sec_op()
@@ -257,8 +257,8 @@ def calculation():
     elif symb == '/':
         if second_v == 0:
             print(Style.RESET_ALL, end = '')
-            print('    ','--' + first_up_line + sec_up_line + third_up_line + '--------')
-            print('    ','| ', end = '')
+            print('      ','--' + first_up_line + sec_up_line + third_up_line + '--------')
+            print('      ','| ', end = '')
             print(Back.CYAN, end = '')
             try:
                 print('', first_v[count1:first_len+count1],'', symb,'', second_v[count2:sec_len+count2],'', end = '')
@@ -272,9 +272,9 @@ def calculation():
                         print('', first_v[count1:first_len+count1],'', symb,'', '0','', end = '')
             print(Style.RESET_ALL, end = '')
             print(' |')
-            print('    ',first_down_line + sec_down_line + third_down_line + add2_down)
+            print('      ',first_down_line + sec_down_line + third_down_line + add2_down)
             print(Back.RED, end = '')
-            res = 'Cannot be divided by zero'
+            res = ' Cannot be divided by zero '
             print('')
             print(res)
             print('')
@@ -282,6 +282,8 @@ def calculation():
         else:
             print(Back.CYAN, end = '')
             res = float(first_v) / float(second_v)
+            if res == 0:
+                res = 0
             result()
     elif symb == '%':
         res = float(first_v) % float(second_v)
@@ -299,16 +301,16 @@ def calculation():
                 result()
             except:
                 print(Back.RED)
-                print('    Result is too large    ')
-                print('Please choose another value')
+                print('     Result is too large     ')
+                print(' Please choose another value ')
                 print('')
                 time.sleep(0.5)
                 more_operations()
 
 def result():
     print(Style.RESET_ALL, end = '')
-    print('    ','--' + first_up_line + sec_up_line + third_up_line + '--------')
-    print('    ','| ', end = '')
+    print('      ','--' + first_up_line + sec_up_line + third_up_line + '--------')
+    print('      ','| ', end = '')
     print(Back.CYAN, end = '')
     try:
         if fminus_trig is True and sminus_trig is True:
@@ -332,22 +334,22 @@ def result():
             print('', '-' + first_v[count1:first_len+count1],'', symb,'', '0','', end = '')
     print(Style.RESET_ALL, end = '')
     print(' |')
-    print('    ',first_down_line + sec_down_line + third_down_line + add2_down)
+    print('      ',first_down_line + sec_down_line + third_down_line + add2_down)
     print(Back.GREEN)
-    print('The answer is: ', res)
+    print(' The answer is: ', round(res, 13), '')
     print('')
 
 def more_operations():
     print(Back.CYAN, end = '')
-    moreop = input('One more operation?(y/n(Enter)): ')
+    moreop = input(' One more operation?(y/n(Enter)): ')
     cmd_clean()
     while moreop == 'y' or moreop =='Y':
         calculation()
         print(Back.CYAN, end = '')
-        moreop = input('One more operation?(y/n(Enter)): ')
+        moreop = input(' One more operation?(y/n(Enter)): ')
     if moreop == 'n' or moreop == 'N' or moreop == '':
         print(Back.CYAN)
-        print('Closing...')
+        print(' Closing... ')
         time.sleep(0.5)
         cmd_clean()
         sys.exit()
@@ -357,14 +359,14 @@ def more_operations():
 
 def exit():
     print(Back.RED)
-    x = input('Type y(yes)/n(no) or press Enter(no): ')
+    x = input(' Type y(yes)/n(no) or press Enter(no): ')
     cmd_clean()
     if x == 'y' or x =='Y':
         calculation()
         more_operations()
     elif x == 'n' or x =='N' or x == '':
         print(Back.CYAN)
-        print('Closing...')
+        print(' Closing... ')
         time.sleep(0.5)
         cmd_clean()
         sys.exit()
