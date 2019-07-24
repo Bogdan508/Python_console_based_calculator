@@ -24,32 +24,36 @@ def first_op():
     print('      ','-------------')
     try:
         print(Back.CYAN)
+        global a
         a = input(' Enter the first number: ')
         cmd_clean()
         float(a)
-
-        test = int(0)
-        global first_v
-        first_v = int(0)
-        if float(a) == float(test):
-            first_v = 0
-        else:
-            first_v = a
-        float(first_v)
-
-        global first_len
-        if first_v == 0:
-            first_len = 1
-        else:
-            first_len = len(first_v)
     except:
         cmd_clean()
         print(Back.RED, end = '')
         print('' , a, 'is not a number ')
         print(' Select a num type value ')
         print('')
+        del a
         time.sleep(0.5)
         first_op()
+
+    test = int(0)
+    global first_v
+    first_v = None
+    first_v = int(0)
+    if float(a) == float(test):
+        first_v = 0
+    else:
+        first_v = a
+    float(first_v)
+
+    global first_len
+    first_len = None
+    if first_v == 0:
+        first_len = 1
+    else:
+        first_len = len(first_v)
 
     try:
         global first_zerof
@@ -147,57 +151,59 @@ def oper_c():
         add1_down = 11 * upper_sym
     else:
         print(Back.RED, end = '')
-        print('        Wrong operator        ')
+        print('         Wrong operator        ')
         oper = False
     if oper is False:
-        print(' Select the correct operator  ')
+        print('  Select the correct operator  ')
         print('')
         time.sleep(0.5)
         oper_c()
 
 def sec_op():
+    print(Style.RESET_ALL, end = '')
+    print('      ','--' + first_up_line + sec_up_line + '---------')
+    print('      ','| ', end = '')
+    print(Back.CYAN, end = '')
     try:
-        print(Style.RESET_ALL, end = '')
-        print('      ','--' + first_up_line + sec_up_line + '---------')
-        print('      ','| ', end = '')
-        print(Back.CYAN, end = '')
-        try:
-            if fminus_trig is True:
-                print('', '-' + first_v[count1:first_len+count1],'', symb, ' ? ', end = '')
-            else:
-                print('', first_v[count1:first_len+count1],'', symb, ' ? ', end = '')
-        except:
-            print('', '0','', symb, ' ? ', end = '')
-        print(Style.RESET_ALL, end = '')
-        print(' |')
-        print('      ',first_down_line + sec_down_line + add1_down)
-        print(Back.CYAN)
+        if fminus_trig is True:
+            print('', '-' + first_v[count1:first_len+count1],'', symb, ' ? ', end = '')
+        else:
+            print('', first_v[count1:first_len+count1],'', symb, ' ? ', end = '')
+    except:
+        print('', '0','', symb, ' ? ', end = '')
+    print(Style.RESET_ALL, end = '')
+    print(' |')
+    print('      ',first_down_line + sec_down_line + add1_down)
+    print(Back.CYAN)
+    try:
+        global b
         b = input(' Enter the second number: ')
         cmd_clean()
         float(b)
-
-        test = int(0)
-        global second_v
-        second_v = int(0)
-        if float(b) == float(test):
-            second_v = 0
-        else:
-            second_v = b
-        float(first_v)
-
-        global sec_len
-        if second_v == 0:
-            sec_len = 1
-        else:
-            sec_len = len(second_v)
     except:
         cmd_clean()
         print(Back.RED, end = '')
         print('', b, 'is not a number ')
         print(' Select a num type value ')
         print('')
+        del b
         time.sleep(0.5)
         sec_op()
+
+    test = int(0)
+    global second_v
+    second_v = int(0)
+    if float(b) == float(test):
+        second_v = 0
+    else:
+        second_v = b
+    float(first_v)
+
+    global sec_len
+    if second_v == 0:
+        sec_len = 1
+    else:
+        sec_len = len(second_v)
 
     try:
         global sec_zerof
